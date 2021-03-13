@@ -204,6 +204,8 @@ Initialize your project or create a new one:
 `heroku git:remote -a richkid` (_richkid_ == your_project_name)
 
 > Keep in mind that you can add a addon MySQL database like JAWSDB. Visit: https://www.victorvr.com/tutorial/implementacion-de-aplicaciones-adonisjs-en-heroku for tutorial.
+> Is important to know that Heroku uses the package-lock.json to indentify modules, so to avoid issues with Prisma we left the `package-lock.json` in the main directory. \
+> Probably this is related with the dependecie module, should be added as NOT devDependencies?
 
 Commit and push the code into Heroku:
 `git push -f heroku main` (_main_ represents your main branch like _master_)
