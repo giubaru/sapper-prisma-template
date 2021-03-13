@@ -194,3 +194,16 @@ npx prisma db push --preview-feature
 ## The fast Studio
 
 You can execute `npx prisma studio` to open a web client to browse the connected db.
+
+# Heroku Deploy
+
+First of all login into your Heroku account:
+`heroku login`
+
+Initialize your project or create a new one:
+`heroku git:remote -a richkid` (_richkid_ == your_project_name)
+
+> Keep in mind that you can add a addon MySQL database like JAWSDB. Visit: https://www.victorvr.com/tutorial/implementacion-de-aplicaciones-adonisjs-en-heroku for tutorial.
+
+Commit and push the code into Heroku:
+`git push -f heroku main` (_main_ represents your main branch like _master_)
