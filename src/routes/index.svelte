@@ -1,5 +1,16 @@
-<script>
+<script context="module">
 	import successkid from 'images/successkid.jpg';
+
+  export function preload({params, query}){
+    return this.fetch('db.json').then(r => r.json()).then(testTableData => {
+      return {testTableData};
+    });
+  }
+
+</script>
+
+<script>
+  export let testTableData;
 </script>
 
 <style>
@@ -47,4 +58,7 @@
 	<figcaption>Have fun with Sapper!</figcaption>
 </figure>
 
-<p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>
+
+{#each testTableData as fetchData}
+  <p>{fetchData.name}</p>
+{/each}
