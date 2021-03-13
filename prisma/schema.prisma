@@ -1,0 +1,21 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Example Table to test migrations
+// visit: https://www.prisma.io/docs/concepts/components/prisma-migrate for more information.
+// Keep in mind that for Heroku has a better wey to push new tables. https://www.prisma.io/docs/reference/api-reference/command-reference/#db 
+// npx prisma db push --preview-feature
+model TestTable {
+  id      Int      @id @default(autoincrement())
+  name    String?  @db.VarChar(255)
+  email   String   @unique @db.VarChar(255)
+}
