@@ -155,3 +155,42 @@ If your project lives outside the WSL root directory, [this limitation](https://
 ## Bugs and feedback
 
 Sapper is in early development, and may have the odd rough edge here and there. Please be vocal over on the [Sapper issue tracker](https://github.com/sveltejs/sapper/issues).
+
+# Prisma ORM
+
+## Creating new tables based models defined in `schema.primsa`
+
+When you have models defined in `schema.prisma` you must to execute this commando to ship the changes into the db.
+
+schema.prisma
+```js
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Example Table to test migrations
+// visit: https://www.prisma.io/docs/concepts/components/prisma-migrate for more information.
+// Keep in mind that for Heroku has a better wey to push new tables. https://www.prisma.io/docs/reference/api-reference/command-reference/#db 
+// npx prisma db push --preview-feature
+model TestTable {
+  id      Int      @id @default(autoincrement())
+  name    String?  @db.VarChar(255)
+  email   String   @unique @db.VarChar(255)
+}
+```
+
+```bash
+npx prisma db push --preview-feature
+```
+
+## The fast Studio
+
+You can execute `npx prisma studio` to open a web client to browse the connected db.

@@ -13,6 +13,7 @@ generator client {
 // Example Table to test migrations
 // visit: https://www.prisma.io/docs/concepts/components/prisma-migrate for more information.
 // Keep in mind that for Heroku has a better wey to push new tables. https://www.prisma.io/docs/reference/api-reference/command-reference/#db 
+// npx prisma db push --preview-feature
 model TestTable {
   id      Int      @id @default(autoincrement())
   name    String?  @db.VarChar(255)
